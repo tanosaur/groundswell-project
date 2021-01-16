@@ -134,8 +134,8 @@ body {
 }
 
 #keyword-filter {
-  background-color: var(--sharp);
-  color: white;
+  background-color: white;
+  color: black;
   /* background-color: #fdbdcb; */
   text-transform: none;
 }
@@ -196,7 +196,7 @@ body {
   cursor: pointer;
   width: 49%;
   border: 1px solid grey;
-  background-color: var(--shade);
+  background-color: var(--sharp);
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -217,10 +217,12 @@ body {
 
 .toggle-unselected {
   opacity: 0.5;
+  color: black;
 }
 
 .toggle-selected {
   opacity: 1;
+  color: white;
 }
 
 #add-button, #back-button {

@@ -56,6 +56,9 @@ document.getElementById("more-button").addEventListener("click", function() {
 // document.getElementById("keyword-search").focus({preventScroll: true});
 
 document.getElementById("search-button").addEventListener("click", (e) => {
+  if (keyword) {
+    document.getElementById("keyword-filter").remove();
+  }
   keyword = document.getElementById("keyword-search").value.toLowerCase();
   if (keyword) {
     keywordSearch();
@@ -70,6 +73,7 @@ function _cancelKeywordSearch() {
   keyword = null;
   lastKeyword = null;
   render();
+  console.log(document.getElementById("keyword-filter"));
   document.getElementById("keyword-filter").remove();
   document.getElementById("keyword-search").value = "";
   document.getElementById("cancel-button").style.display = "none";
@@ -79,6 +83,9 @@ function _cancelKeywordSearch() {
 
 document.getElementById('keyword-search').onkeydown = function(e){
    if(e.keyCode == 13){
+     if (keyword) {
+       document.getElementById("keyword-filter").remove();
+     }
      keyword = document.getElementById("keyword-search").value.toLowerCase();
      if (keyword) {
        keywordSearch();
@@ -95,7 +102,7 @@ function keywordSearch() {
     const selected = document.getElementById("selected-filters");
     let indicator = selected.insertBefore(document.createElement("div"), selected.firstChild);
     indicator.id = "keyword-filter";
-    indicator.innerText = "Keyword: " + keyword;
+    indicator.innerHTML = "Keyword " + "<span style='font-weight:400;'>" + keyword + "</span>";
     indicator.onclick = function() {
       _cancelKeywordSearch();
       indicator.remove();
