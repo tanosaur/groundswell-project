@@ -8,10 +8,11 @@ const config = {
   MAP_CENTER: [-0.12, 51.5], //London
   HIGHLIGHT_COLOR: "#92d2d6",
   SHARP_COLOR: "#00adc1",
+  GREY_COLOR: "#a8a8a8",
   AREAS_OF_WORK: "Areas of Work",
   HELP_NEEDED: "Help Needed",
-  SHOW_FIRST: ["anti-hate", "interfaith", "bame", "business support"],
-  BREAKPOINT: 760,
+  SHOW_FIRST: ["anti-hate", "interfaith", "bame", "covid support", "local biz", "youth", "business support"],
+  BREAKPOINT: 740,
 };
 
 let lastLocation = null;

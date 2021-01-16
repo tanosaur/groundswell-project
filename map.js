@@ -7,15 +7,21 @@ const map = new mapboxgl.Map({
   zoom: 10,
 });
 
-const geocoder = new MapboxGeocoder({
-  accessToken: config.MAPBOX_TOKEN,
-  mapboxgl: mapboxgl,
-  marker: {
-    color: config.SHARP_COLOR,
-  },
-});
+let locationMarker = document.createElement("div");
+locationMarker.className = "location-marker";
 
 (function addGeocoder() {
+  let locationMarker = document.createElement("div");
+  locationMarker.className = "location-marker";
+  
+  const geocoder = new MapboxGeocoder({
+    accessToken: config.MAPBOX_TOKEN,
+    mapboxgl: mapboxgl,
+    marker: {
+      element: locationMarker,
+    },
+  });
+
   document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
   document.getElementsByClassName("mapboxgl-ctrl-geocoder--input")[0].placeholder = "E.g. NW6 7QB, Manchester";
   document.getElementsByClassName("mapboxgl-ctrl-geocoder--input")[0].focus();
@@ -35,7 +41,7 @@ function flyTo(location) {
   if (window.innerWidth > config.BREAKPOINT) {
     shifted = [location.geometry.coordinates[0] - 0.031, location.geometry.coordinates[1]];
   } else {
-    shifted = [location.geometry.coordinates[0], location.geometry.coordinates[1] - 0.005];
+    shifted = [location.geometry.coordinates[0], location.geometry.coordinates[1] - 0.013];
   }
 
   if (location.geometry) {
@@ -46,8 +52,21 @@ function flyTo(location) {
   }
 }
 
+
 function selectedMarker(location) {
-  // let selectedMarker = document.getElementById(location.properties.Id);
+  if (lastMarker) {
+    lastMarker.classList.remove("selected-marker");
+  }
+
+  let selectedMarker = null;
+
+  if (orgs) {
+    selectedMarker = document.getElementById("orgs"+location.properties.Id);
+  } else {
+    selectedMarker = document.getElementById("events"+location.properties.Id);
+  }
+  selectedMarker.classList.add("selected-marker");
+
   new mapboxgl.Popup({
     offset: 20,
     closeOnClick: true,
@@ -55,6 +74,8 @@ function selectedMarker(location) {
   }).setLngLat(location.geometry.coordinates)
   .setHTML(location.properties.Name)
   .addTo(map); //don't know why i have to recreate this again
+
+  lastMarker = selectedMarker;
 }
 
 function mapMarker(location, orgs) {

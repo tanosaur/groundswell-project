@@ -64,10 +64,6 @@ function formatFilters() {
     });
   })
 
-  document.querySelectorAll(".area-filter").forEach(filter => {
-    if (filter.innerText.toLowerCase() === "bame" || filter.innerText.toLowerCase() === "anti-hate" || filter.innerText.toLowerCase() === "interfaith") {
-      document.getElementById("selected-filters").appendChild(filter);
-    }
-  });
+  _showDefaults();
 
 }

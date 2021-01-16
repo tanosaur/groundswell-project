@@ -1,6 +1,7 @@
 let orgs = true;
 let keyword = null;
 let lastKeyword = null;
+let lastMarker = null;
 let more = false;
 
 function sortByDistance(coords, orgs) {
@@ -43,7 +44,11 @@ function listing(location, orgs) {
 
     const picture = listing.appendChild(document.createElement("div"));
     picture.className = "listing-pic";
-    picture.style.backgroundImage = "url('" + location.properties["Picture"] + "')";
+    if (location.properties["Picture"]) {
+      picture.style.backgroundImage = "url('" + location.properties["Picture"] + "')";
+    } else {
+      picture.style.backgroundImage = "url('images/fists.jpg')";
+    }
 
     const right = listing.appendChild(document.createElement("div"));
     right.className = "listing-right";
@@ -82,7 +87,11 @@ function listing(location, orgs) {
 
     const picture = listing.appendChild(document.createElement("div"));
     picture.className = "listing-pic";
-    picture.style.backgroundImage = "url('" + location.properties["Picture"] + "')";
+    if (location.properties["Picture"]) {
+      picture.style.backgroundImage = "url('" + location.properties["Picture"] + "')";
+    } else {
+      picture.style.backgroundImage = "url('images/fists.jpg')";
+    }
 
     const right = listing.appendChild(document.createElement("div"));
     right.className = "listing-right";
@@ -137,11 +146,11 @@ function allListings(orgs) {
 
 function selectedListing(location) {
 
+  document.getElementById("selected-pic").style.display = "block";
   if (location.properties["Picture"]) {
-    document.getElementById("selected-pic").style.display = "block";
     document.getElementById("selected-pic").style.backgroundImage = "url('" + location.properties["Picture"] + "')";
   } else {
-    document.getElementById("selected-pic").style.display = "none";
+    document.getElementById("selected-pic").style.backgroundImage = "url('images/fists-big.jpg')";
   }
 
   document.getElementById("selected-title").innerText = location.properties["Name"];

@@ -146,13 +146,17 @@ function _toggleDefaults() {
   });
 
   if (!selected.childNodes.length) {
-    document.querySelectorAll(".area-filter").forEach(filter => {
-      if (filter.innerText.toLowerCase() === "bame" || filter.innerText.toLowerCase() === "anti-hate" || filter.innerText.toLowerCase() === "interfaith") {
-        selected.appendChild(filter);
-      }
-    });
+    _showDefaults();
   }
 
+}
+
+function _showDefaults() {
+  document.querySelectorAll(".area-filter").forEach(filter => {
+    if (config.SHOW_FIRST.some(area => area === filter.innerText.toLowerCase())) {
+      document.getElementById("selected-filters").appendChild(filter);
+    }
+  });
 }
 
 

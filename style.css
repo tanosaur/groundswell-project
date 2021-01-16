@@ -1,9 +1,8 @@
 :root {
-  --grey: #404040;
+  --grey: #a8a8a8;
   --shade: #92d2d6;
   --sharp: #00adc1;
   --darker: #324b4d;
-  /* --shade-background: rgba(146,210,214, 0.6); */
   --background: rgba(248, 245, 241, 0.6);
 }
 
@@ -87,7 +86,7 @@ body {
 }
 
 #lists {
-  height: 40vh;
+  height: 45vh;
   width: 95%;
 }
 
@@ -145,13 +144,13 @@ body {
 }
 
 .help-filter-selected {
-  background-color: #a8a8a8;
+  background-color: var(--grey);
 }
 
 /* Keyword Search */
 
 #keyword-search-bar {
-  height: 2em;
+  height: 2.2em;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -161,7 +160,7 @@ body {
 #keyword-search {
   border: none;
   font-size: 1em;
-  height: 2.2rem;
+  height: 100%;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   box-sizing: border-box;
@@ -174,7 +173,7 @@ body {
   border-radius: 8px;
   height: 100%;
   box-sizing: border-box;
-  width: 12%;
+  width: 2.9em;
 }
 
 #searching {
@@ -239,7 +238,8 @@ body {
   display: none;
   border-radius: 8px;
   border: 1px solid grey;
-  background-color: var(--shade);
+  background-color: var(--sharp);
+  color: white;
 }
 
 #add-button, #more-button {
@@ -261,6 +261,7 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   background-image: url("https://cleanpower.london/groundswell/images/markerBright.png");
+  z-index: 0;
 }
 
 .events-marker {
@@ -274,11 +275,30 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   background-image: url("https://cleanpower.london/groundswell/images/marker.png");
+  z-index: 0;
 }
 
-/* .selected-marker {
-  background-image: url("https://cleanpower.london/groundswell/images/selected-marker.png");
-} */
+.selected-marker {
+  padding: 0;
+  width: 24px;
+  height: 50px; /* 1.59 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("https://cleanpower.london/groundswell/images/marker-sharp.png");
+  z-index: 1;
+}
+
+.location-marker {
+  padding: 0;
+  width: 24px;
+  height: 50px; /* 1.59 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("https://cleanpower.london/groundswell/images/marker-grey.png");
+  z-index: 0;
+}
 
 .mapboxgl-popup {
   max-width: 200px;
@@ -291,7 +311,7 @@ body {
 
 
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 740px) {
 
   #logo {
     display: none;
@@ -299,7 +319,7 @@ body {
 
 }
 
-@media only screen and (min-width: 760px) {
+@media only screen and (min-width: 740px) {
 
   body {
     font-size: 15px;
@@ -312,15 +332,16 @@ body {
   #main {
     width: 370px;
     height: 100vh;
+    margin-left: 1.5vw;
   }
 
   #lists {
-    height: 50vh;
+    height: 68vh;
   }
 
   #logo {
     width: 85%;
-    padding-right: 10%;
+    padding-right: 8%;
     margin-bottom: 0.7rem;
   }
 
