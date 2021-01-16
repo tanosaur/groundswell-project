@@ -68,7 +68,9 @@ document.getElementById("cancel-button").addEventListener("click", (e) => {
 
 function _cancelKeywordSearch() {
   keyword = null;
+  lastKeyword = null;
   render();
+  document.getElementById("keyword-filter").remove();
   document.getElementById("keyword-search").value = "";
   document.getElementById("cancel-button").style.display = "none";
   document.getElementById("search-button").style.display = "block"
@@ -89,6 +91,17 @@ function keywordSearch() {
   document.getElementById("cancel-button").style.display = "block";
   document.getElementById("search-button").style.display = "none";
   render();
+  if (keyword && keyword !== lastKeyword) {
+    const selected = document.getElementById("selected-filters");
+    let indicator = selected.insertBefore(document.createElement("div"), selected.firstChild);
+    indicator.id = "keyword-filter";
+    indicator.innerText = "Keyword: " + keyword;
+    indicator.onclick = function() {
+      _cancelKeywordSearch();
+      indicator.remove();
+    };
+    lastKeyword = keyword;
+  }
 }
 
 function toggleAreasFilter(area) {
@@ -163,16 +176,16 @@ function bringSelectedToTop() {
     }
   });
 
-  if (keyword) {
+  if (keyword && keyword !== lastKeyword) {
     let indicator = selected.appendChild(document.createElement("div"));
-    indicator.className = "keyword-filter";
+    indicator.id = "keyword-filter";
     indicator.innerText = "Keyword: " + keyword;
     indicator.onclick = function() {
       _cancelKeywordSearch();
       indicator.remove();
     };
+    lastKeyword = keyword;
   }
-
 }
 
 

@@ -7,6 +7,7 @@ const config = {
   MAP_STYLE: "mapbox://styles/groundswell-admin/ckjzlwiu90o0017tcoks030j7",
   MAP_CENTER: [-0.12, 51.5], //London
   HIGHLIGHT_COLOR: "#92d2d6",
+  SHARP_COLOR: "#00adc1",
   AREAS_OF_WORK: "Areas of Work",
   HELP_NEEDED: "Help Needed",
   SHOW_FIRST: ["anti-hate", "interfaith", "bame", "business support"],

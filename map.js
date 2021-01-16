@@ -11,7 +11,7 @@ const geocoder = new MapboxGeocoder({
   accessToken: config.MAPBOX_TOKEN,
   mapboxgl: mapboxgl,
   marker: {
-    color: config.HIGHLIGHT_COLOR,
+    color: config.SHARP_COLOR,
   },
 });
 

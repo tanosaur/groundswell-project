@@ -1,5 +1,6 @@
 let orgs = true;
 let keyword = null;
+let lastKeyword = null;
 let more = false;
 
 function sortByDistance(coords, orgs) {

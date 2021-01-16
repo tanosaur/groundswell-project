@@ -1,6 +1,8 @@
 :root {
   --grey: #404040;
   --shade: #92d2d6;
+  --sharp: #00adc1;
+  --darker: #324b4d;
   /* --shade-background: rgba(146,210,214, 0.6); */
   --background: rgba(248, 245, 241, 0.6);
 }
@@ -54,8 +56,8 @@ body {
   width: 100%;
   align-items: center;
   border-radius: 8px 8px 0 0;
-  /* background-color: var(--background);
-  padding-top: 0.5em; */
+  background-color: var(--background);
+  /* padding-top: 0.5em;  */
 }
 
 /* Level 2 */
@@ -120,7 +122,7 @@ body {
   cursor: pointer;
 }
 
-.area-filter, .help-filter, .keyword-filter {
+.area-filter, .help-filter, #keyword-filter {
   border: 0.5px solid var(--grey);
   border-radius: 8px;
   text-transform: uppercase;
@@ -131,8 +133,10 @@ body {
   margin: 0.2em;
 }
 
-.keyword-filter {
-  background-color: pink;
+#keyword-filter {
+  background-color: var(--sharp);
+  color: white;
+  /* background-color: #fdbdcb; */
   text-transform: none;
 }
 
@@ -141,7 +145,7 @@ body {
 }
 
 .help-filter-selected {
-  background-color: grey;
+  background-color: #a8a8a8;
 }
 
 /* Keyword Search */
@@ -170,7 +174,7 @@ body {
   border-radius: 8px;
   height: 100%;
   box-sizing: border-box;
-  width: 17%;
+  width: 12%;
 }
 
 #searching {
@@ -198,6 +202,8 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  /* font-size: 0.9em; */
+  /* font-weight: 400; */
   /* padding: 0.2em 0.3em; */
 }
 
@@ -227,16 +233,18 @@ body {
 }
 
 #back-button {
-  padding: 0 1em;
+  padding: 0 0.9em;
   display: none;
   border-radius: 8px;
   border: 1px solid grey;
   background-color: var(--shade);
 }
 
-#add-button {
+#add-button, #more-button {
   font-weight: 400;
+  color: var(--darker);
 }
+
 
 /* Markers */
 
@@ -250,7 +258,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("https://cleanpower.london/groundswell/images/marker.png");
+  background-image: url("https://cleanpower.london/groundswell/images/markerBright.png");
 }
 
 .events-marker {
@@ -309,17 +317,13 @@ body {
   }
 
   #logo {
-    width: 83%;
+    width: 85%;
     padding-right: 10%;
     margin-bottom: 0.7rem;
   }
 
   #filters {
     overflow: hidden;
-  }
-
-  #bottom {
-    background-color: var(--background);
   }
 
 }

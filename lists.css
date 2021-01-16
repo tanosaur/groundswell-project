@@ -6,8 +6,12 @@
   display: none;
 }
 
+#orgs-list, #events-list {
+  padding-bottom: 10rem;
+}
+
 #lists, #selected {
-  overflow: auto;
+  overflow: scroll;
 }
 
 .listing {
