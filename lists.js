@@ -69,7 +69,7 @@ function listing(location, orgs) {
 
     const description = right.appendChild(document.createElement("div"));
     description.className = "listing-description";
-    description.innerHTML = "<p>" + location.properties["Description 1"] + "</p><p>" + location.properties["Description 2"] + "</p>" ;
+    description.innerText = location.properties["Description 1"];
 
     listing.addEventListener("click", function () {
       showLocation(location);
@@ -127,7 +127,7 @@ function listing(location, orgs) {
 
     const description = right.appendChild(document.createElement("div"));
     description.className = "listing-description event-listing-description";
-    description.innerHTML = "<p>" + location.properties["Description 1"] + "</p><p>" + location.properties["Description 2"] + "</p>" ;
+    description.innerText = location.properties["Description 1"];
 
     listing.addEventListener("click", function () {
       showLocation(location);

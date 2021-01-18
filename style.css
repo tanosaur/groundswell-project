@@ -63,7 +63,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  overflow: scroll;
+  overflow-y: scroll;
   padding-bottom: 0.3em;
 }
 
@@ -94,7 +94,7 @@ body {
 }
 
 #all-filters {
-  height: 100%;
+  /* height: 100%; */
   display: none;
 }
 
@@ -246,9 +246,9 @@ body {
 #add-button, #more-button {
   font-weight: 400;
   color: var(--darker);
-  border: var(--darker) 1px solid;
+  /* border: var(--darker) 1px solid; */
   box-sizing: border-box;
-  background-color: var(--background);
+  background-color: var(--green);
   border-radius: 8px;
 }
 
@@ -335,6 +335,10 @@ body {
     height: 45vh;
   }
 
+  #selected-bottom {
+    padding-bottom: 25vh;
+  }
+
 }
 
 @media only screen and (min-width: 740px) {
@@ -363,12 +367,17 @@ body {
 
   #lists {
     flex-shrink: 10;
+    height: calc(72vh - 2.5rem - 2.2rem);
   }
 
   #logo {
     width: 85%;
     padding-right: 8%;
     margin-bottom: 0.7rem;
+  }
+
+  #selected-bottom {
+    padding-bottom: 5vh;
   }
 
 }

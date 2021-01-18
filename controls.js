@@ -78,7 +78,6 @@ function _cancelKeywordSearch() {
   keyword = null;
   lastKeyword = null;
   render();
-  console.log(document.getElementById("keyword-filter"));
   document.getElementById("keyword-filter").remove();
   document.getElementById("keyword-search").value = "";
   document.getElementById("cancel-button").style.display = "none";

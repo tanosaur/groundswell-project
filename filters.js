@@ -3,6 +3,9 @@ let helpNeeded = [];
 let areasOfWorkShowing = [];
 let helpNeededShowing = [];
 
+let firstWorkLoad = [];
+let firstHelpLoad = [];
+
 function collectFilters(location) {
   let categories1 = location.properties[config.AREAS_OF_WORK].split(",");
   categories1.map(category => {
@@ -45,24 +48,31 @@ function formatFilters() {
   // })
 
   areasOfWork.map(area => {
-    let button = areasFilters.appendChild(document.createElement("div"));
-    button.innerText = area;
-    button.className = "area-filter";
-    button.addEventListener("click", function(e) {
-      button.classList.toggle("work-filter-selected");
-      toggleAreasFilter(area);
-    });
+    if (!firstWorkLoad.includes(area)) {
+      let button = areasFilters.appendChild(document.createElement("div"));
+      button.innerText = area;
+      button.className = "area-filter";
+      button.addEventListener("click", function(e) {
+        button.classList.toggle("work-filter-selected");
+        toggleAreasFilter(area);
+      });
+    }
   })
 
   helpNeeded.map(area => {
-    let button = helpFilters.appendChild(document.createElement("div"));
-    button.innerText = area;
-    button.className = "help-filter";
-    button.addEventListener("click", function() {
-      button.classList.toggle("help-filter-selected");
-      toggleHelpFilter(area);
-    });
+    if (!firstHelpLoad.includes(area)) {
+      let button = helpFilters.appendChild(document.createElement("div"));
+      button.innerText = area;
+      button.className = "help-filter";
+      button.addEventListener("click", function() {
+        button.classList.toggle("help-filter-selected");
+        toggleHelpFilter(area);
+      });
+    }
   })
+
+  firstWorkLoad = [...areasOfWork];
+  firstHelpLoad = [...helpNeeded];
 
   _showDefaults();
 

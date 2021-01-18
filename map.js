@@ -24,7 +24,6 @@ locationMarker.className = "location-marker";
 
   document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
   document.getElementsByClassName("mapboxgl-ctrl-geocoder--input")[0].placeholder = "E.g. NW6 7QB, Manchester";
-  document.getElementsByClassName("mapboxgl-ctrl-geocoder--input")[0].focus();
 })();
 
 function showLocation(location) {
@@ -66,7 +65,6 @@ function selectedMarker(location) {
     selectedMarker = document.getElementById("events"+location.properties.Id);
   }
   selectedMarker.classList.add("selected-marker");
-  console.log(selectedMarker);
 
   new mapboxgl.Popup({
     offset: 20,

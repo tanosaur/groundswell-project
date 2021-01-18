@@ -30,6 +30,10 @@ let lastLocation = null;
       lonfield: config.LONGITUDE_FIELD,
       delimiter: ","
     }, function (err, geojson) {
+      if (err) {
+        console.log("Error with orgs data")
+        console.error(err);
+      }
       geojson.features.forEach(function (location, index) {
         location.properties.Id = index;
         listing(location, true);
@@ -37,7 +41,7 @@ let lastLocation = null;
         collectFilters(location);
       });
       sortByDistance(config.MAP_CENTER, true);
-      formatFilters(); // Rewrite as Promise
+      formatFilters();
     });
   };
 })();
@@ -55,6 +59,10 @@ let lastLocation = null;
       lonfield: config.LONGITUDE_FIELD,
       delimiter: ","
     }, function (err, geojson) {
+      if (err) {
+        console.log("Error with events data")
+        console.error(err);
+      }
       geojson.features.forEach(function (location, index) {
         location.properties.Id = index;
         listing(location, false);
@@ -62,6 +70,7 @@ let lastLocation = null;
         collectFilters(location);
       });
       sortByDistance(config.MAP_CENTER, false);
+      formatFilters();
     });
   };
 })();
