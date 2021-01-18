@@ -34,8 +34,6 @@
 
 .listing-areas {
   font-weight: 300;
-  font-size: 0.7em;
-  font-weight: 200;
   text-transform: uppercase;
   display: flex;
   flex-direction: row;
@@ -50,6 +48,9 @@
   white-space: nowrap;
   padding: 0.1em 0.15em 0.09em 0.15em;
   margin: 0.1em;
+  color: black;
+  font-size: 0.7em;
+  text-transform: uppercase;
 }
 
 .listing-description {
@@ -113,6 +114,7 @@
   border-radius: 10px;
   width: 100%;
   height: 100%;
+  font-weight:300;
 }
 
 #selected-pic {
@@ -140,6 +142,7 @@
 
 #selected-title {
   text-transform: capitalize;
+  font-size: 1em;
 }
 
 #when {
@@ -148,28 +151,34 @@
 }
 
 #left {
-  width: 60vw;
+  width: 65%;
 }
 
 #right {
-  width: 24vw;
+  width: 34%;
 }
 
 #selected-help-categories, #selected-specialisations {
-  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 #selected-help-categories {
-  padding-top: 0.4em;
+
 }
 
-#selected-help {
-  margin-top: 10px;
-}
-
-#right {
-  color: grey;
+.help-needed-label {
+  padding: 0.7em 0 0.5em 0;
   font-size: 0.8em;
+  text-align: right;
+  font-style: italic;
+  /* text-transform: uppercase; */
+}
+
+#selected-bottom {
+  padding-bottom: 25vh;
 }
 
 #selected-description p {
@@ -190,6 +199,11 @@
 .social a {
   font-size: 0.7em;
   color: grey;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .socials-icon {

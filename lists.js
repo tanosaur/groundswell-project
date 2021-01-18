@@ -98,7 +98,10 @@ function listing(location, orgs) {
 
     const top = right.appendChild(document.createElement("div"));
     top.className = "listing-top";
-    const title = top.appendChild(document.createElement("span"));
+
+    const left = top.appendChild(document.createElement("div"));
+
+    const title = left.appendChild(document.createElement("span"));
     title.className = "listing-title";
     title.innerText = location.properties["Name"];
 
@@ -114,7 +117,7 @@ function listing(location, orgs) {
       category.innerText = word;
     })
 
-    const when = rightright.appendChild(document.createElement("div"));
+    const when = left.appendChild(document.createElement("div"));
     when.className = "events-listing-when";
     when.innerHTML = location.properties["Start Date - Day"] + "/"
     + location.properties["Start Date - Month"] + " "
@@ -154,14 +157,30 @@ function selectedListing(location) {
   }
 
   document.getElementById("selected-title").innerText = location.properties["Name"];
-  document.getElementById("selected-specialisations").innerHTML = location.properties[config.AREAS_OF_WORK].replace(/,(?=[^\s])/g, ", ");
+  const areas = document.getElementById("selected-specialisations");
+  areas.textContent = "";
+  let words = location.properties[config.AREAS_OF_WORK].split(",");
+  words.map(word => {
+    const category = areas.appendChild(document.createElement("span"));
+    category.className = "category";
+    category.innerText = word;
+  })
+
 
   if (location.properties[config.HELP_NEEDED]) {
     document.getElementById("selected-help").style.display = "block";
-    document.getElementById("selected-help-categories").innerHTML = location.properties[config.HELP_NEEDED].replace(/,(?=[^\s])/g, ", ");
+    const areas = document.getElementById("selected-help-categories");
+    areas.textContent = "";
+    let words = location.properties[config.HELP_NEEDED].split(",");
+    words.map(word => {
+      const category = areas.appendChild(document.createElement("span"));
+      category.className = "category";
+      category.innerText = word;
+    })
   } else {
     document.getElementById("selected-help").style.display = "none";
   }
+
 
   if (location.properties["Start Date - Day"]) {
     document.getElementById("when").style.display = "block";

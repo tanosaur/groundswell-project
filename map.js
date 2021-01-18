@@ -107,3 +107,11 @@ function clearPopup() {
   const popups = document.getElementsByClassName("mapboxgl-popup");
   if (popups[0]) popups[0].remove();
 }
+
+map.on('load', function() {
+  const container = document.getElementsByClassName("mapboxgl-ctrl-attrib-inner")[0];
+  const mine = document.createElement("div");
+  container.insertBefore(mine, container.firstChild);
+  mine.className = "mine";
+  mine.innerHTML = "Built by <a href='/'>cleanpower.london</a> ";
+});

@@ -248,7 +248,7 @@ body {
   color: var(--darker);
   /* border: var(--darker) 1px solid; */
   box-sizing: border-box;
-  background-color: var(--green);
+  /* background-color: var(--green); */
   border-radius: 8px;
 }
 
@@ -314,6 +314,16 @@ body {
   text-transform: capitalize;
 }
 
+.mapboxgl-ctrl-attrib.mapboxgl-compact-show .mapboxgl-ctrl-attrib-inner {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.mine {
+  text-align: right;
+}
+
 
 
 @media only screen and (max-width: 740px) {
@@ -335,8 +345,8 @@ body {
     height: 45vh;
   }
 
-  #selected-bottom {
-    padding-bottom: 25vh;
+  .mapboxgl-ctrl-attrib.mapboxgl-compact-show .mapboxgl-ctrl-attrib-inner > * {
+    padding: 0 0.2em;
   }
 
 }
@@ -374,10 +384,6 @@ body {
     width: 85%;
     padding-right: 8%;
     margin-bottom: 0.7rem;
-  }
-
-  #selected-bottom {
-    padding-bottom: 5vh;
   }
 
 }

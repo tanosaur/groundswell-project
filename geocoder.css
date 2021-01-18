@@ -136,7 +136,7 @@
 
 .mapboxgl-ctrl-geocoder--icon-search {
   position: absolute;
-  top: 13px;
+  top: 0.4rem;
   left: 12px;
   width: 23px;
   height: 23px;
@@ -154,7 +154,7 @@
 .mapboxgl-ctrl-geocoder--icon-close {
   width: 20px;
   height: 20px;
-  margin-top: 8px;
+  margin-top: 0;
   margin-right: 3px;
 }
 
