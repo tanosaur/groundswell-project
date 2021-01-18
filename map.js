@@ -13,7 +13,7 @@ locationMarker.className = "location-marker";
 (function addGeocoder() {
   let locationMarker = document.createElement("div");
   locationMarker.className = "location-marker";
-  
+
   const geocoder = new MapboxGeocoder({
     accessToken: config.MAPBOX_TOKEN,
     mapboxgl: mapboxgl,
@@ -66,6 +66,7 @@ function selectedMarker(location) {
     selectedMarker = document.getElementById("events"+location.properties.Id);
   }
   selectedMarker.classList.add("selected-marker");
+  console.log(selectedMarker);
 
   new mapboxgl.Popup({
     offset: 20,

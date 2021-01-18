@@ -3,6 +3,7 @@
   --shade: #92d2d6;
   --sharp: #00adc1;
   --darker: #324b4d;
+  --green: #e9f2c8;
   --background: rgba(248, 245, 241, 0.6);
 }
 
@@ -20,15 +21,6 @@ body {
   bottom: 0;
   width: 100%;
   height: 100%;
-}
-
-#main {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
 }
 
 #main > * {
@@ -52,11 +44,11 @@ body {
 #bottom {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   align-items: center;
   border-radius: 8px 8px 0 0;
   background-color: var(--background);
-  /* padding-top: 0.5em;  */
 }
 
 /* Level 2 */
@@ -71,7 +63,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  overflow: auto;
+  overflow: scroll;
   padding-bottom: 0.3em;
 }
 
@@ -80,13 +72,12 @@ body {
   flex-direction: row;
   justify-content: space-between;
   width: 95%;
-  height: 1.8rem;
-  margin-bottom: 0.5rem;
+  height: 2rem !important;
   font-weight: 300;
 }
 
 #lists {
-  height: 45vh;
+  margin-top: 0.5rem;
   width: 95%;
 }
 
@@ -98,7 +89,7 @@ body {
 
 #filters-left p {
   font-size: 1em;
-  color: var(--grey);
+  color: black;
   margin: 1em 0.2em 0.5em 0.2em;
 }
 
@@ -117,8 +108,12 @@ body {
 #more-button {
   font-size: 1rem;
   text-align: right;
-  padding: 0.2em 0.3em;
+  padding: 0 0.4em;
   cursor: pointer;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .area-filter, .help-filter, #keyword-filter {
@@ -189,6 +184,7 @@ body {
   display: flex;
   flex-direction: row;
   width: 80%;
+  height: 100%;
 }
 
 #toggles > * {
@@ -197,6 +193,7 @@ body {
   border: 1px solid grey;
   background-color: var(--sharp);
   height: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -228,9 +225,13 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   height: 100%;
-  padding: 0 0.5em;
+}
+
+#add-button {
+  padding: 0 0.8em;
 }
 
 #back-button {
@@ -245,8 +246,11 @@ body {
 #add-button, #more-button {
   font-weight: 400;
   color: var(--darker);
+  border: var(--darker) 1px solid;
+  box-sizing: border-box;
+  background-color: var(--background);
+  border-radius: 8px;
 }
-
 
 /* Markers */
 
@@ -307,6 +311,7 @@ body {
 .mapboxgl-popup-content {
   text-align: center;
   font-weight: 500;
+  text-transform: capitalize;
 }
 
 
@@ -315,6 +320,19 @@ body {
 
   #logo {
     display: none;
+  }
+
+  #main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #lists {
+    height: 45vh;
   }
 
 }
@@ -332,21 +350,25 @@ body {
   #main {
     width: 370px;
     height: 100vh;
+    min-height: 450px;
     margin-left: 1.5vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #bottom {
+    height: 72vh;
+    justify-content: flex-start;
   }
 
   #lists {
-    height: 68vh;
+    flex-shrink: 10;
   }
 
   #logo {
     width: 85%;
     padding-right: 8%;
     margin-bottom: 0.7rem;
-  }
-
-  #filters {
-    overflow: hidden;
   }
 
 }

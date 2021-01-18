@@ -21,6 +21,11 @@ function selectedViewToggles() {
   document.getElementById("back-button").style.display = "flex";
 }
 
+
+document.getElementById("add-button").addEventListener("click", function() {
+  openForm();
+});
+
 document.getElementById("back-button").addEventListener("click", function() {
   backToAll();
 });

@@ -1,0 +1,163 @@
+:root {
+  --grey: #a8a8a8;
+  --shade: #92d2d6;
+  --sharp: #00adc1;
+  --darker: #324b4d;
+  --background: rgba(248, 245, 241, 0.6);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  background-color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+form {
+  width: 100%;
+  margin: 3rem 0;
+}
+
+.entry {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.entry > * {
+  width: 49%;
+}
+
+.question {
+  padding-right: 4rem;
+  box-sizing: border-box;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+textarea {
+  width: 100%;
+}
+
+input, textarea {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  color: var(--sharp);
+}
+
+input {
+  height: 1.6em;
+  box-sizing: border-box;
+  padding: 0 0.3em;
+}
+
+.multiple {
+
+}
+
+.multiple input {
+  width: 60%;
+}
+
+.multiple input[type="checkbox"] {
+  width: auto;
+  margin-top: 0.5rem;
+}
+
+select {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  width: 60%;
+}
+
+.pair {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0.2em;
+  align-items: center;
+}
+
+p.top {
+  margin-bottom: 0.2em;
+}
+
+
+h1 {
+  margin-bottom: 1.5rem;
+  color: var(--sharp);
+  font-size: 1.8em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: 1em;
+  font-weight: 500;
+  margin-bottom: 0.4em;
+}
+
+.bold {
+  font-weight: 400;
+}
+
+li {
+  list-style-position: inside;
+  margin-bottom: 0.2em;
+}
+
+button {
+  padding: 0.5em;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.3em;
+}
+
+
+@media only screen and (max-width: 740px) {
+
+  #main {
+    max-width: 500px;
+  }
+
+  .entry > * {
+    width: 100%;
+  }
+
+  h3 {
+    margin-bottom: 0.2em;
+  }
+
+  .question {
+    margin-bottom: 1.5em;
+  }
+
+}
