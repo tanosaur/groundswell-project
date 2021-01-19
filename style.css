@@ -27,8 +27,70 @@ body {
   z-index: 1;
 }
 
+#dialogue-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Level 1 */
+
+#dialogue {
+  display: none;
+  position: absolute;
+  padding: 1.8rem 2.2rem 0.9rem 2.2rem;
+  /* border: 1px solid var(--darker); */
+  z-index: 2;
+  background-color: var(--green);
+  border-radius: 8px;
+  flex-direction: row;
+  justify-content: space-around;
+  font-weight: 300;
+}
+
+#close-button {
+  align-self: flex-start;
+  height: 1.2rem;
+  width: 1.2rem;
+  cursor: pointer;
+  margin-left: 1.3rem;
+}
+
+#close-button-mobile {
+  display: none;
+}
+
+#dialogue-content {
+  margin: 2.2rem 0;
+  text-align: left;
+  height: 4.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#dialogue-content > * {
+  padding-bottom: 0.3rem;
+  display: block;
+  color: var(--sharp);
+  font-size: 1.3rem;
+}
+
+#dialogue-content a {
+  font-family: 'Roboto', sans-serif;
+  color: var(--sharp);
+  text-decoration: none;
+}
+
+#dialogue-content a:hover {
+  text-decoration: underline;
+}
+
 
 #top {
   background-color: var(--background);
@@ -246,7 +308,7 @@ body {
 #add-button, #more-button {
   font-weight: 400;
   color: var(--darker);
-  /* border: var(--darker) 1px solid; */
+  border: var(--darker) 1px solid;
   box-sizing: border-box;
   /* background-color: var(--green); */
   border-radius: 8px;
@@ -348,6 +410,54 @@ body {
   .mapboxgl-ctrl-attrib.mapboxgl-compact-show .mapboxgl-ctrl-attrib-inner > * {
     padding: 0 0.2em;
   }
+
+
+  #dialogue {
+    padding: 2.2rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+    height: 20rem;
+    box-sizing: border-box;
+  }
+
+  #close-button-mobile {
+    align-self: flex-end;
+    height: 1.2rem;
+    width: 1.2rem;
+    cursor: pointer;
+    margin-left: 0;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  #close-button {
+    display: none;
+  }
+
+  #dialogue-content {
+    margin: 0;
+    padding-top: 2rem;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #dialogue-content > * {
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  #dialogue-content a {
+    width: 89%;
+    /* margin-left: 2rem; */
+  }
+
 
 }
 

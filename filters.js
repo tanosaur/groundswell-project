@@ -22,7 +22,6 @@ function collectFilters(location) {
       helpNeeded.push(category);
     }
   });
-
 }
 
 function formatFilters() {

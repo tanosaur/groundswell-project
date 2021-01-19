@@ -119,14 +119,40 @@ function listing(location, orgs) {
 
     const when = left.appendChild(document.createElement("div"));
     when.className = "events-listing-when";
-    when.innerHTML = location.properties["Start Date - Day"] + "/"
-    + location.properties["Start Date - Month"] + " "
-    // + location.properties["Start Date - Year"].substring(2) + " "
-    + location.properties["Start Time - H"] + ":"
-    + location.properties["Start Time - M"] + " - "
-    + location.properties["End Time - H"] + ":"
-    + location.properties["End Time - M"]
-    ;
+    let array = location.properties["Start"].split("-");
+    let year = array[0];
+    let month = months[parseInt(array[1])-1];
+    let day = array[2];
+    let hour = array[3];
+    let minute = array[4];
+    if (minute === "0") {
+      minute = "00";
+    }
+
+    let endArray = location.properties["End"].split("-");
+    let endYear = endArray[0];
+    let endMonth = months[parseInt(endArray[1])-1];
+    let endDay = endArray[2];
+    let endHour = endArray[3];
+    let endMinute = endArray[4];
+    if (endMinute === "0") {
+      endMinute = "00";
+    }
+
+    let date = day + " " + month + " " + year;
+    let endDate = endDay + " " + endMonth + " " + endYear;
+
+    let string = null;
+
+    if (date === endDate) {
+      string = date + " " + hour + ":" + minute + " - " + endHour + ":" + minute;
+    } else if (year === endYear) {
+      string = day + " " + month + " - " + endDate;
+    } else {
+      string = date + " - " + endDate;
+    }
+
+    when.innerText = string;
 
     const description = right.appendChild(document.createElement("div"));
     description.className = "listing-description event-listing-description";
@@ -182,16 +208,43 @@ function selectedListing(location) {
   }
 
 
-  if (location.properties["Start Date - Day"]) {
+  if (location.properties["Start"]) {
     document.getElementById("when").style.display = "block";
-    document.getElementById("when").innerHTML = location.properties["Start Date - Day"] + "/"
-    + location.properties["Start Date - Month"] + " "
-    // + location.properties["Start Date - Year"].substring(2) + " "
-    + location.properties["Start Time - H"] + ":"
-    + location.properties["Start Time - M"] + " - "
-    + location.properties["End Time - H"] + ":"
-    + location.properties["End Time - M"]
-    ;
+
+    let array = location.properties["Start"].split("-");
+    let year = array[0];
+    let month = months[parseInt(array[1])-1];
+    let day = array[2];
+    let hour = array[3];
+    let minute = array[4];
+    if (minute === "0") {
+      minute = "00";
+    }
+
+    let endArray = location.properties["End"].split("-");
+    let endYear = endArray[0];
+    let endMonth = months[parseInt(endArray[1])-1];
+    let endDay = endArray[2];
+    let endHour = endArray[3];
+    let endMinute = endArray[4];
+    if (endMinute === "0") {
+      endMinute = "00";
+    }
+
+    let date = day + " " + month + " " + year;
+    let endDate = endDay + " " + endMonth + " " + endYear;
+
+    let string = null;
+
+    if (date === endDate) {
+      string = date + " " + hour + ":" + minute + " - " + endHour + ":" + minute;
+    } else if (year === endYear) {
+      string = day + " " + month + " - " + endDate;
+    } else {
+      string = date + " - " + endDate;
+    }
+
+    document.getElementById("when").innerText = string;
 
     document.getElementById("instagram").style.display = "none";
     document.getElementById("website").style.display = "none";
@@ -268,3 +321,5 @@ function selectedListing(location) {
   document.getElementById("selected").scrollTop = 0;
   document.getElementById("lists").scrollTop = 0;
 }
+
+let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
