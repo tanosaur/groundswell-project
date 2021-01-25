@@ -96,11 +96,11 @@
       <div class="entry">
         <div class="question" id="qDescription">
           <h3>Description<span class="asterisk" style="display: none;">*</span></h3>
-          <p>Write a brief description to show on our map.</p>
+          <p>Write a brief description to show on our map (max length 72 characters per box).</p>
         </div>
         <div>
-          <textarea rows = "4" cols = "40" name = "description1" placeholder="First paragraph"></textarea>
-          <textarea rows = "4" cols = "40" name = "description2" placeholder="Second paragraph (optional)"></textarea>
+          <textarea rows = "4" cols = "40" maxlength="72" name = "description1" placeholder="First paragraph"></textarea>
+          <textarea rows = "4" cols = "40" maxlength="72" name = "description2" placeholder="Second paragraph (optional)"></textarea>
         </div>
       </div>
 
@@ -281,29 +281,29 @@
 				<div class="question" id="qLocation">
 					<h3>Location<span class="asterisk" style="display: none;">*</span></h3>
 					<p>
-						To obscure your location, enter a nearby fake address or just your town/city and check 'Obscured'.
+						To hide your location, enter a nearby fake address or just your town/city and check 'Hidden my location'.
 					</p>
 				</div>
 				<div class="multiple">
 					<div class="pair">
 					<label for="street1">Street Line 1</label>
-					<input name="street1" type="text" placeholder="122 Maple Avenue">
+					<input name="street1" id="street1" type="text" placeholder="122 Maple Avenue">
 					</div>
 					<div class="pair">
 					<label for="street2">Street Line 2</label>
-					<input name="street2" type="text" placeholder="Unit 7B">
+					<input name="street2" id="street2" type="text" placeholder="Unit 7B">
 				</div>
 				<div class="pair">
 					<label for="city">Town/City<span class="asterisk" style="display: none;">*</span></label>
-					<input name="city" type="text" placeholder="Liverpool">
+					<input name="city" id="city" type="text" placeholder="Liverpool">
 				</div>
 				<div class="pair">
 					<label for="post-code">Postcode</label>
-					<input name="postcode" type="text" placeholder="L1 3HE">
+					<input name="postcode" id="postcode" type="text" placeholder="L1 3HE">
 				</div>
 				<div class="pair">
 					<label for="country">Country<span class="asterisk" style="display: none;">*</span></label>
-					<select name="country">
+					<select id="country" name="country">
 					  <option value="GBR">United Kingdom</option>
 					  <option value="AFG">Afghanistan</option>
 					  <option value="ALA">Åland Islands</option>
@@ -557,7 +557,7 @@
 				</div>
 					<div class="field left-field">
 						<input type="checkbox" name="obscured" id="obscured" value="true">
-						<label for="obscured">Obscured</label>
+						<label for="obscured">I have hidden my location</label>
 					</div>
 				</div>
 			</div>
@@ -582,14 +582,28 @@
 				<input name="email" type="email" placeholder="harry@hackneycyclists.org" required>
 			</div>
 
+
+      <div class="entry">
+        <div class="question" id="qComments">
+          <h3>Comments<span class="asterisk" style="display: none;"></span></h3>
+          <p>Anything you'd like to share?</p>
+        </div>
+        <div>
+          <textarea rows = "4" cols = "40" name = "comments" placeholder="Comment"></textarea>
+        </div>
+      </div>
+
 			<input type="hidden" id="start" name="start">
 			<input type="hidden" id="end" name="end">
 			<input type="hidden" name="picture-check">
 
 			<button type="submit">Submit</button>
 	  </form>
+		<div id="response">
+		</div>
 	</div>
 	</div>
+	<script src="dates.js"></script>
 	<script src="form.js"></script>
   <script>
 		function consolidate(fieldsetID, headerName) {
@@ -619,14 +633,30 @@
 
     form.addEventListener('submit', e => {
       e.preventDefault();
+			document.getElementsByTagName("button")[0].innerText = "Sending...";
+			document.getElementsByTagName("button")[0].disabled = true;
+			document.getElementById("response").style.display = "block";
+			document.getElementById("response").innerText = "Please wait for our confirmation."
+
 			consolidate("fieldset1", "work");
 			consolidate("fieldset2", "help");
 			formatDate("start", "year", "month", "day", "hour", "minute");
 			formatDate("end", "end-year", "end-month", "end-day", "end-hour", "end-minute");
 
-      fetch(scriptURL, {method: 'POST', body: new FormData(form)})
-        .then(response => console.log('Success!', response))
-        .catch(error => console.error('Error!', error.message));
+			checkChange();
+
+			fetch(scriptURL, {method: 'POST', body: new FormData(form)})
+      .then(response => {
+				console.log('Success!', response);
+				form.style.display = "none";
+				document.getElementById("response").innerText = "Success! Your submission has been received."
+			}).catch(error => {
+				console.error('Error: ', error);
+				document.getElementsByTagName("button")[0].disabled = false;
+				document.getElementsByTagName("button")[0].innerText = "Send";
+				document.getElementById("response").innerText = "Oops! Something went wrong - please try again. If this issue persists, please contact us at info@groundswell.world"
+			});
+
     });
   </script>
 </body>

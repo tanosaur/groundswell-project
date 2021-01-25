@@ -113,5 +113,5 @@ map.on('load', function() {
   const mine = document.createElement("div");
   container.insertBefore(mine, container.firstChild);
   mine.className = "mine";
-  mine.innerHTML = "Built by <a href='/'>cleanpower.london</a> ";
+  mine.innerHTML = "Built by <a href='https://cleanpower.london'>cleanpower.london</a> ";
 });

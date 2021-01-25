@@ -23,15 +23,18 @@ function selectedViewToggles() {
 
 
 document.getElementById("add-button").addEventListener("click", function() {
+  document.getElementById("dialogue-container").style.display = "flex";
   document.getElementById("dialogue").style.display = "flex";
 });
 
 document.getElementById("close-button").addEventListener("click", function() {
+  document.getElementById("dialogue-container").style.display = "none";
   document.getElementById("dialogue").style.display = "none";
 });
 
 document.getElementById("close-button-mobile").addEventListener("click", function() {
   document.getElementById("dialogue").style.display = "none";
+  document.getElementById("dialogue-container").style.display = "none";
 });
 
 document.getElementById("back-button").addEventListener("click", function() {

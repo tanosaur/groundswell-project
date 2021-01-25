@@ -33,7 +33,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }
@@ -125,7 +125,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-bottom: 0.3em;
 }
 
@@ -326,7 +326,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("https://cleanpower.london/groundswell/images/markerBright.png");
+  background-image: url("https://map.groundswellproject.org/images/marker.png");
   z-index: 0;
 }
 
@@ -340,7 +340,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("https://cleanpower.london/groundswell/images/marker.png");
+  background-image: url("https://map.groundswellproject.org/images/marker.png");
   z-index: 0;
 }
 
@@ -351,7 +351,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("https://cleanpower.london/groundswell/images/marker-sharp.png");
+  background-image: url("https://map.groundswellproject.org/images/marker-sharp.png");
   z-index: 1;
 }
 
@@ -362,7 +362,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("https://cleanpower.london/groundswell/images/marker-grey.png");
+  background-image: url("https://map.groundswellproject.org/images/marker-grey.png");
   z-index: 0;
 }
 
@@ -481,13 +481,14 @@ body {
   }
 
   #bottom {
-    height: 72vh;
+    height: 55vh;
+    flex-grow: 2;
     justify-content: flex-start;
   }
 
   #lists {
     flex-shrink: 10;
-    height: calc(72vh - 2.5rem - 2.2rem);
+    height: 100%;
   }
 
   #logo {
